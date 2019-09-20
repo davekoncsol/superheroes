@@ -28,7 +28,7 @@ BUCKET = 'superheroes-project'
 
 class SuperheroCreate(LoginRequiredMixin, CreateView):
   model = Superhero
-  fields = ['name', 'power', 'description', 'age']
+  fields = ['name', 'description', 'age']
   def form_valid(self, form):
     # Assign the logged in user (self.request.user)
     form.instance.user = self.request.user

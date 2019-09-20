@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Notable&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bangers&display=swap');
 
 body {
   margin: 0;
@@ -21,7 +21,7 @@ h4,
 h5,
 h6 {
 
-  font-family: 'Notable', sans-serif;
+  font-family: 'Bangers', cursive;
   text-align: center;
 
   margin: 0;
@@ -31,7 +31,7 @@ span,
 p,
 li,
 a {
-  font-family: 'Notable', sans-serif;
+  font-family: 'Bangers', cursive;
   font-weight: 200;
 }
 
@@ -57,14 +57,17 @@ input {
 
 .page-footer {
   position: fixed;
+  font-family: 'Bangers', cursive;
   left: 0;
   bottom: 0;
   width: 100%;
+  background-image: linear-gradient(rgb(47, 0, 255),red)
 }
 
 nav {
   position: fixed;
   z-index: 1;
+  background-image: linear-gradient(red, rgb(47, 0, 255))
 }
 
 .card .card-content {
@@ -72,3 +75,8 @@ nav {
   justify-content: space-between;
   align-items: center;
 }
+
+.section  {
+  opacity: .9;
+}
+

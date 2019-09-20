@@ -33,7 +33,7 @@
   {% csrf_token %}
   <input type="file" name="photo-file">
   <br><br>
-  <input type="submit" class="btn" value="Upload Photo">
+  <input type="submit" class="btn blue waves-effect waves-blue" value="Upload Photo">
 </form>
 <hr>
 <div class="row card">
@@ -50,7 +50,7 @@
       <div class="card-action">
         <form action="{% url 'unassoc_power' superhero.id power.id %}" method="post">
           {% csrf_token %}
-          <button type="submit" class="btn">Remove</button>
+          <button type="submit" class="btn blue waves-effect waves-blue">Remove Power</button>
         </form>
       </div>
     </div>
@@ -72,7 +72,7 @@
       <div class="card-action">
         <form action="{% url 'assoc_power' superhero.id power.id %}" method="post">
           {% csrf_token %}
-          <button type="submit" class="btn">Add</button>
+          <button type="submit" class="btn blue waves-effect waves-blue">Add Power</button>
         </form>
       </div>
     </div>

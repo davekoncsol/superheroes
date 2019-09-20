@@ -16,8 +16,7 @@ class Power(models.Model):
         return reverse('powers_detail', kwargs={'pk': self.id})
 
 class Superhero(models.Model):  # Note that parens are optional if not inheriting from another class
-    name = models.CharField(max_length=100)
-    power = models.CharField(max_length=100)    
+    name = models.CharField(max_length=100)   
     description = models.TextField(max_length=250)
     age = models.IntegerField()
     add_powers = models.ManyToManyField(Power)

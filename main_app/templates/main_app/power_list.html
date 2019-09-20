@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Power List</h1>
+<h1 class="card">Power List</h1>
 
 {% for power in power_list %}
   <a href="{% url 'powers_detail' power.id %}">
