@@ -5,9 +5,11 @@
   <h1 class="">Existing Superhero Database</h1>
 </div>
 {% for hero in dictionary %}
+{% if hero.id < 10 %}
 <script>
- // console.log('api')
- // weavy.space({ key: "{{ hero.name }}" }).app({key: "{{ hero.name }} comments", type: "comments", container: ".{{ hero.name }}.container"})
+  var hero = "{{ hero }}";
+ 
+  weavy.space({ key: "{{ hero.id}}" }).app({key: "{{ hero.id }} comments", type: "comments", container: ".id-{{ hero.id }}.container", open: true})
 </script>
 <div class="card">
   <div class="card-content">
@@ -29,8 +31,10 @@
       <img class="responsive-image" src="{{ hero.images.sm }}">
     </div>
   </div>
-  <div class="{{ hero.name }} container"></div>
+  <div class="id-{{ hero.id }} container"></div>
 </div>
+{% endif %}
+
 {% endfor %}
 
 {% endblock %}

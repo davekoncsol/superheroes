@@ -132,13 +132,17 @@ nav {
     display: flex;
   }
 
-  .weavy-messenger-btn {
+  .weavy-messenger-btn , .weavy-notifications-btn{
     height: 64px;
     display: flex;
     
   }
 
-  .weavy-messenger-btn > a {
+  .weavy-messenger-btn > a , .weavy-notifications-btn > a {
     display: flex;
     align-items: center;
+  }
+
+  .container {
+    height: 400px;
   }
