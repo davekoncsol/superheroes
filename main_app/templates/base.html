@@ -14,6 +14,68 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://dave-test.weavycloud.com/javascript/weavy.jquery.js"></script>
+  {% if user.is_authenticated %}
+  <script>
+   var user = "{{ user }}";
+   console.log(user, "user is authenticated")
+   var weavy = new Weavy({
+      jwt: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkxIiwibmFtZSI6IlBvc3RmaWxlcyBCb3QiLCJpc3MiOiJjbGllbnRpZCIsImV4cCI6MjEyMjEyMjIyMywiY2xpZW50X2lkIjoiY2xpZW50aWQifQ.SuzM_PwRqPQfQiGtcXppV96T4kSik2BY51eP2cLcBNQ',
+                spaces: [
+                    {
+                        key: "main",
+                        container: '.weavy-widget',
+                        tabbed: true,
+                        apps: [
+                            { type: "messenger", key: "main-messenger", },
+                            { type: "notifications", key: "main-notifications", },
+                            { type: "posts", key: "main-hub", name: "Hub", },
+                            { type: "tasks", key: "main-tasks" },
+                        ]
+                    },
+                ]
+    });
+
+    weavy.on("open", function(e, open){
+      if (open.space.options.key === "main") {
+       $(`.widget-drawer`).addClass("widget-drawer-in");
+      } 
+    })
+
+    weavy.on("close", function(e, close){
+      if (close.space.options.key === "main") {
+      $(".widget-drawer").removeClass("widget-drawer-in");
+      }
+    })
+
+      //messenger click
+    $(document).on("click", ".weavy-messenger-btn", function () {
+        weavy.space("main").app({ type: "messenger", key: "main-messenger" }).toggle();
+    });
+
+    $(document).on("click", ".weavy-notifications-btn", function () {
+        weavy.space("main").app({ type: "notifications", key: "main-notifications" }).toggle();
+    });
+
+    //hub click
+    $(document).on("click", ".weavy-hub-btn", function () {
+        weavy.space("main").app({ type: "posts", name: "hub", key: "main-hub" }).toggle();
+    });
+    //hub click
+    $(document).on("click", ".weavy-tasks-btn", function () {
+        weavy.space("main").app({ type: "tasks",  key: "main-tasks" }).toggle();
+    });
+  </script>
+
+  
+   {% else %}
+   <script>
+    var user = "";
+    console.log(user, "user is NOT")
+   </script>
+   {% endif %}
+   
+  
   <script rel="script" src="{% static 'js/main.js' %}"></script>
 </head>
 
@@ -32,7 +94,14 @@
           <li><a href="{% url 'superheroes_create' %}">Add SuperHero</a></li>
           <li><a href="{% url 'powers_add' %}">Add Power</a></li>
           <li><a href="{% url 'powers_index' %}">View All Powers</a></li>
+          <li class="weavy-messenger-btn">
+            <a>
+
+              <svg height="24" viewBox="0 0 24 24" width="24" data-toggle="tooltip" title="" class="i i-comment text-icon" data-original-title="comment"><path d="m9 22c-.55 0-1-.45-1-1v-3h-4c-1.1 0-2-.9-2-2v-12c0-1.11.9-2 2-2h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2h-6.1l-3.7 3.71c-.2.19-.45.29-.7.29z"></path></svg>
+            </a>
+          </li>
           {% else %}
+
           <li><a href="{% url 'signup' %}">Sign Up</a></li>
           <li><a href="{% url 'login' %}">Log In</a></li>
           {% endif %}
@@ -40,7 +109,9 @@
       </div>
     </nav>
   </header>
-
+  <div class="widget-drawer">
+    <div class="weavy-widget"></div>
+  </div>
   <main>
     <div class="parallax-container">
       <div class="parallax">

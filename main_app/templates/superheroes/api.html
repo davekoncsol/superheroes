@@ -2,9 +2,14 @@
 {% block content %}
 
 {% for hero in dictionary %}
+<script>
+  console.log('api')
+  weavy.space({ key: "{{ hero.name }}" }).app({key: "{{ hero.name }} comments", type: "comments", container: ".{{ hero.name }}.container"})
+</script>
 <div class="card">
   <div class="card-content">
     <span class="card-title">{{ hero.name }}</span>
+
     <div class='left'>
       <p>Powerstats</p>
       <li>Strength {{ hero.powerstats.strength }}</li>
@@ -18,6 +23,7 @@
     <div class="">
       <img class="responsive-image" src="{{ hero.images.sm }}">
     </div>
+    <div class="{{ hero.name }} container"></div>
   </div>
 
 </div>
