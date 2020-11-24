@@ -8,13 +8,13 @@
     <span class="card-title">{{ power.name }}</span>
     <p>Power: {{ power.name }}</p>
     <p>Description: {{ power.description }}</p>
-    
-   
+
+
   </div>
   <div class="card-action">
-        <a href="{% url 'powers_update' power.id %}">Edit</a>
-        <a href="{% url 'powers_delete' power.id %}">Delete</a>
-      </div>
+    <a href="{% url 'powers_update' power.id %}">Edit</a>
+    <a href="{% url 'powers_delete' power.id %}">Delete</a>
+  </div>
 </div>
 
 

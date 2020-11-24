@@ -61,7 +61,7 @@ input {
   left: 0;
   bottom: 0;
   width: 100%;
-  background-image: linear-gradient(rgb(47, 0, 255),red)
+  background-image: linear-gradient(rgb(47, 0, 255), red)
 }
 
 nav {
@@ -76,7 +76,6 @@ nav {
   align-items: center;
 }
 
-.section  {
+.section {
   opacity: .9;
 }
-
